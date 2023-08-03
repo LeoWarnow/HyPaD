@@ -1,4 +1,4 @@
-function [n,m,p,q,f,g,Df,Dg,Aineq,bineq,Aeq,beq,lb,ub,x0] = T2(params)
+function [n,m,p,q,f,g,Df,Dg,Aineq,bineq,Aeq,beq,lb,ub,x0,is_convex,is_quadratic] = T2(params)
 %T2 A scalable test instance
 %   This example was taken from:
 %   Marianna De Santis, Gabriele Eichfelder, Julia Niebling, Stefan
@@ -11,6 +11,10 @@ m = params(2); % Integer variables
 p = 2; % Dimension criterion space
 q = 1; % Number of constraints
 assert(n==2,'Currently only n = 2 is supported.')
+
+% Problem type
+is_convex = true;
+is_quadratic = true;
 
 % Objective function
 Q1 = ones(n+m);

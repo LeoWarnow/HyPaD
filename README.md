@@ -9,11 +9,12 @@ It serves as an interface to the HyPaD algorithm and provides all instructions t
 ## References
 As this implementation is based on the scientific work by [Gabriele Eichfelder](https://www.tu-ilmenau.de/mmor/team/gabriele-eichfelder/) and [Leo Warnow](https://www.tu-ilmenau.de/mmor/team/leo-warnow/), please cite the corresponding preprint when using this code:
 ````
-@Misc{HyPaD,
-  author       = {Gabriele Eichfelder and Leo Warnow},
-  howpublished = {\url{http://www.optimization-online.org/DB_HTML/2021/08/8541.html}},
-  title        = {A hybrid patch decomposition approach to compute an enclosure for multi-objective mixed-integer convex optimization problems},
-  year         = {2021},
-  journal      = {Optimization Online},
+@Article{EW2023,
+  author    = {Gabriele Eichfelder and Leo Warnow},
+  journal   = {Mathematical Methods of Operations Research},
+  title     = {A hybrid patch decomposition approach to compute an enclosure for multi-objective mixed-integer convex optimization problems},
+  year      = {2023},
+  doi       = {10.1007/s00186-023-00828-x},
+  publisher = {Springer},
 }
 ````

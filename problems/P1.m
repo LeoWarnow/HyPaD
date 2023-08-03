@@ -1,5 +1,5 @@
-function [n,m,p,q,f,g,Df,Dg,Aineq,bineq,Aeq,beq,lb,ub,x0] = P1(~)
-%P1 A quadratic test instance
+function [n,m,p,q,f,g,Df,Dg,Aineq,bineq,Aeq,beq,lb,ub,x0,is_convex,is_quadratic] = P1(~)
+%P1 A nonconvex quadratic test instance
 %   This example was taken from:
 %   Kristo Mela, Juhani Koski and Risto Silvennoinen. Algorithm for
 %   Generating the Pareto Optimal Set of Multiobjective Nonlinear
@@ -11,6 +11,9 @@ m = 8; % Integer variables
 p = 2; % Dimension criterion space
 q = 1; % Number of constraints
 
+% Problem type
+is_convex = false;
+is_quadratic = true;
 
 % Objective function
 G = [1,-1,2,0,0,0,0,0,0,0;...

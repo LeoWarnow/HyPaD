@@ -1,4 +1,4 @@
-function [n,m,p,q,f,g,Df,Dg,Aineq,bineq,Aeq,beq,lb,ub,x0] = T9(~)
+function [n,m,p,q,f,g,Df,Dg,Aineq,bineq,Aeq,beq,lb,ub,x0,is_convex,is_quadratic] = T9(~)
 %T9 A quadratic test instance
 
 % Dimension of decision and criterion space
@@ -7,6 +7,9 @@ m = 4; % Integer variables
 p = 2; % Dimension criterion space
 q = 4; % Number of constraints
 
+% Problem type
+is_convex = true;
+is_quadratic = true;
 
 % Objective function
 f = @(x) [x(1)+x(3)+x(5)+x(7);...

@@ -1,4 +1,4 @@
-function [n,m,p,q,f,g,Df,Dg,Aineq,bineq,Aeq,beq,lb,ub,x0] = T8(~)
+function [n,m,p,q,f,g,Df,Dg,Aineq,bineq,Aeq,beq,lb,ub,x0,is_convex,is_quadratic] = T8(~)
 %T8 A quadratic test instance
 
 % Dimension of decision and criterion space
@@ -7,12 +7,15 @@ m = 4; % Integer variables
 p = 2; % Dimension criterion space
 q = 4; % Number of constraints
 
+% Problem type
+is_convex = true;
+is_quadratic = true;
 
 % Objective function
 f = @(x) [x(1)+x(3)^2+x(5)+x(7)^2;...
           x(2)^2+x(4)+x(6)^2+x(8)];
 Df = @(x) [1,0,2*x(3),0,1,0,2*x(7),0;...
-           0,1,0,2*x(4),0,2*x(6),0,1];
+           0,2*x(2),0,1,0,2*x(6),0,1];
 
 % Linear constraints (Aineq*x <= bineq, Aeq*x = beq)
 Aineq = [];

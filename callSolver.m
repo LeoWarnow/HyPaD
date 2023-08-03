@@ -1,32 +1,45 @@
-function [L,U,N,ids,it,flag,time,z,Z] = callSolver(problem_name,param,z,Z,EPSILON,OFFSET,plot_result)
+function [L,U,N,ids,it,exitflag,time] = callSolver(problem_name,problem_param,L,U,HYPAD_PARAM,EPSILON,OFFSET,plot_result)
 
-%% Load additional paths and problem
-addpath(genpath('problems'));
-addpath(genpath('solver'));
+%% Load problem
 problem = str2func(problem_name);
-[n,m,p,q,f,g,~,~,Aineq,bineq,Aeq,beq,lb,ub,x0] = problem(param);
 
-%% Initialization of L,U
-if isempty(z) || isempty(Z)
+%% Handling of incorrect or missing input
+[~,m,p,~,f,~,~,~,~,~,~,~,lb,ub,~,is_convex,is_quadratic] = problem(problem_param);
+
+% Applying standard tolerances
+if isempty(EPSILON)
+    EPSILON = 0.1;
+end
+if isempty(OFFSET)
+    OFFSET = EPSILON*1e-3;
+end
+
+% Checking HyPaD parameters
+if isempty(HYPAD_PARAM)
+    HYPAD_PARAM = [1,4,0];
+    disp('Selected SNIA with fixed boxes, 4 splits and no guess.');
+end
+
+% Initialization of L,U
+if isempty(L) || isempty(U)
     startbox = infsup(lb, ub);
     B = intval;
     for i=1:p
         B(i) = (1:p==i)*f(startbox);
     end
-    if isempty(z)
-        z = B.inf';
+    if isempty(L)
+        L = B.inf';
     end
-    if isempty(Z)
-       Z = B.sup';
+    if isempty(U)
+        U = B.sup';
     end
 end
-z = z-OFFSET;
-Z = Z+OFFSET;
-x_init = RSUPIR(n,m,p,q,f,g,Aineq,bineq,Aeq,beq,lb,ub,x0,z,Z-z);
+L = L-OFFSET;
+U = U+OFFSET;
 
 %% Call HyPaD
 tic;
-[L,U,N,ids,it,flag] = HyPaD(problem,param,x_init,z,Z,EPSILON,OFFSET);
+[L,U,N,ids,it,exitflag] = HyPaD(problem,problem_param,HYPAD_PARAM,L,U,EPSILON,OFFSET);
 time = toc;
 
 %% Plot if wanted

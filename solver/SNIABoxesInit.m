@@ -1,5 +1,6 @@
-function [boxesLB,boxesUB,int_num,current_int]=initSNIA(n,m,lb,ub,num_splits)
-%initSNIA Computes boxes to search for new integer assignments within SNIA
+function [boxesLB,boxesUB,int_num,current_int]=SNIABoxesInit(n,m,lb,ub,num_splits)
+%SNIABoxesIniti Computes boxes to search for new integer assignments when
+%using SNIABoxes
 
 % Initialization
 int_lb = lb(n+1:n+m);
