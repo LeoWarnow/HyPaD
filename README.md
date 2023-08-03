@@ -7,7 +7,7 @@ Then, just open the [UserFile.m](https://github.com/LeoWarnow/HyPaD/blob/main/Us
 It serves as an interface to the HyPaD algorithm and provides all instructions that you need to get started.
 
 ## References
-As this implementation is based on the scientific work by [Gabriele Eichfelder](https://www.tu-ilmenau.de/mmor/team/gabriele-eichfelder/) and [Leo Warnow](https://www.tu-ilmenau.de/mmor/team/leo-warnow/), please cite the corresponding preprint when using this code:
+As this implementation is based on the scientific work by [Gabriele Eichfelder](https://www.tu-ilmenau.de/mmor/team/gabriele-eichfelder/) and [Leo Warnow](https://www.tu-ilmenau.de/mmor/team/leo-warnow/), please cite the corresponding paper when using this code:
 ````
 @Article{EW2023,
   author    = {Gabriele Eichfelder and Leo Warnow},
